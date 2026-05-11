@@ -16,10 +16,12 @@ function BookingForm() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const submit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const submit = () => {
     setLoading(true);
-    setTimeout(() => { setLoading(false); setSubmitted(true); }, 1000);
+    setTimeout(() => {
+      setLoading(false);
+      setSubmitted(true);
+    }, 1000);
   };
 
   if (submitted) {
@@ -28,43 +30,75 @@ function BookingForm() {
         <CheckCircle size={44} style={{ color: "#0D9488" }} />
         <p className="text-xl font-bold text-gray-900">Request Received!</p>
         <p className="text-gray-500">We will call you within 24 hours to confirm your appointment.</p>
-        <button onClick={() => setSubmitted(false)} className="text-sm underline mt-2" style={{ color: "#0D9488" }}>Submit another</button>
+        <button onClick={() => setSubmitted(false)} className="text-sm underline mt-2" style={{ color: "#0D9488" }}>
+          Submit another
+        </button>
       </div>
     );
   }
 
   return (
-    <form onSubmit={submit} className="flex flex-col gap-4">
+    <form
+      action="https://formsubmit.co/nvthesportsphysio@gmail.com"
+      method="POST"
+      onSubmit={submit}
+      className="flex flex-col gap-4"
+    >
+      <input
+        type="hidden"
+        name="_cc"
+        value="learnpicktest02@gmail.com"
+      />
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_template" value="table" />
+      <input type="hidden" name="_subject" value="New Physiotherapy Consultation Lead" />
+      <input type="hidden" name="visitType" value={form.visit} />
+
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <input
           required
+          name="name"
           type="text"
           placeholder="Your Name"
           value={form.name}
           onChange={(e) => setForm({ ...form, name: e.target.value })}
           className="w-full px-5 py-4 rounded-xl border border-gray-200 text-gray-800 placeholder-gray-400 text-base focus:outline-none focus:border-teal-500 bg-gray-50"
         />
+
         <input
           required
+          name="phone"
           type="tel"
           placeholder="Phone Number"
           value={form.phone}
           onChange={(e) => setForm({ ...form, phone: e.target.value })}
           className="w-full px-5 py-4 rounded-xl border border-gray-200 text-gray-800 placeholder-gray-400 text-base focus:outline-none focus:border-teal-500 bg-gray-50"
         />
+
         <div className="relative">
           <select
             required
+            name="concern"
             value={form.concern}
             onChange={(e) => setForm({ ...form, concern: e.target.value })}
             className="w-full px-5 py-4 rounded-xl border border-gray-200 text-gray-700 text-base focus:outline-none focus:border-teal-500 bg-gray-50 appearance-none cursor-pointer"
           >
             <option value="" disabled>Your Concern</option>
-            {CONCERNS.map((c) => <option key={c} value={c}>{c}</option>)}
+            {CONCERNS.map((c) => (
+              <option key={c} value={c}>
+                {c}
+              </option>
+            ))}
           </select>
-          <ChevronDown size={16} className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
+
+          <ChevronDown
+            size={16}
+            className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"
+          />
         </div>
+
         <input
+          name="location"
           type="text"
           placeholder="Your Location"
           value={form.location}
@@ -97,7 +131,13 @@ function BookingForm() {
         className="w-full py-5 rounded-xl text-white font-bold text-lg flex items-center justify-center gap-2 transition-all hover:opacity-90 mt-1"
         style={{ backgroundColor: "#0D9488" }}
       >
-        {loading ? <><Loader2 size={20} className="animate-spin" /> Submitting...</> : "Book Your Consultation"}
+        {loading ? (
+          <>
+            <Loader2 size={20} className="animate-spin" /> Submitting...
+          </>
+        ) : (
+          "Book Your Consultation"
+        )}
       </button>
     </form>
   );
@@ -112,10 +152,11 @@ export function Booking() {
           {/* Left */}
           <div className="flex flex-col gap-8">
             <div>
-              
+
               <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
                 Book Your<br />Consultation
               </h2>
+
               <p className="text-lg text-gray-500 mt-4" style={{ lineHeight: "1.7" }}>
                 Fill in your details and we will confirm your appointment within 24 hours.
               </p>
@@ -123,29 +164,48 @@ export function Booking() {
 
             <div className="flex flex-col gap-4">
               <a
-                href="tel:+919876543210"
+                href="tel:+918076372077"
                 className="flex items-center gap-4 p-5 rounded-2xl border border-gray-200 hover:border-teal-300 transition-all group bg-[#439287]"
               >
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0" style={{ backgroundColor: "#f0fdfa" }}>
+                <div
+                  className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0"
+                  style={{ backgroundColor: "#f0fdfa" }}
+                >
                   <Phone size={22} style={{ color: "#0D9488" }} />
                 </div>
+
                 <div>
-                  <p className="text-sm text-[#ffffff]"><span className="font-bold">Call us directly</span></p>
-                  <p className="text-base font-semibold text-[#ffffff]">+91 80763 72077</p>
+                  <p className="text-sm text-[#ffffff]">
+                    <span className="font-bold">Call us directly</span>
+                  </p>
+
+                  <p className="text-base font-semibold text-[#ffffff]">
+                    +91 80763 72077
+                  </p>
                 </div>
               </a>
+
               <a
-                href="https://wa.me/919876543210"
+                href="https://wa.me/+918076372077"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-4 p-5 rounded-2xl border border-gray-200 hover:border-green-300 transition-all group bg-[#439287]"
               >
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0" style={{ backgroundColor: "#f0fdf4" }}>
+                <div
+                  className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0"
+                  style={{ backgroundColor: "#f0fdf4" }}
+                >
                   <MessageCircle size={22} style={{ color: "#25D366" }} />
                 </div>
+
                 <div>
-                  <p className="text-sm text-[#ffffff]"><span className="font-bold">Chat on WhatsApp</span></p>
-                  <p className="text-base font-semibold text-[#ffffff]">+91 80763 72077</p>
+                  <p className="text-sm text-[#ffffff]">
+                    <span className="font-bold">Chat on WhatsApp</span>
+                  </p>
+
+                  <p className="text-base font-semibold text-[#ffffff]">
+                    +91 80763 72077
+                  </p>
                 </div>
               </a>
             </div>

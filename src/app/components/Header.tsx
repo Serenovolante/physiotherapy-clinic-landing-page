@@ -60,7 +60,7 @@ export function Header() {
           {/* Desktop CTAs */}
           <div className="hidden lg:flex items-center gap-4">
             <a
-              href="tel:+919211581728"
+              href="tel:+918076372077"
               className="flex items-center gap-2 text-white/70 hover:text-white transition-colors text-sm font-medium"
             >+91 80763 72077</a>
             <button

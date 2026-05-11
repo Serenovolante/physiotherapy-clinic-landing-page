@@ -1,4 +1,6 @@
 import React from "react";
+import { Routes, Route } from "react-router-dom";
+
 import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
 import { About } from "./components/About";
@@ -8,11 +10,16 @@ import { Location } from "./components/Location";
 import { Booking } from "./components/Booking";
 import { FAQ } from "./components/FAQ";
 import { Footer } from "./components/Footer";
+import PrivacyPolicy from "./components/PrivacyPolicy";
 
-export default function App() {
+function HomePage() {
   return (
-    <div className="min-h-screen antialiased" style={{ fontFamily: "'Inter', sans-serif" }}>
+    <div
+      className="min-h-screen antialiased"
+      style={{ fontFamily: "'Inter', sans-serif" }}
+    >
       <Header />
+
       <main>
         <Hero />
         <About />
@@ -22,7 +29,17 @@ export default function App() {
         <Booking />
         <FAQ />
       </main>
+
       <Footer />
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+    </Routes>
   );
 }

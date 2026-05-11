@@ -21,8 +21,7 @@ function BookingForm() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const submit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const submit = () => {
     setLoading(true);
     setTimeout(() => { setLoading(false); setSubmitted(true); }, 1000);
   };
@@ -33,17 +32,35 @@ function BookingForm() {
         <CheckCircle size={40} style={{ color: "#0D9488" }} />
         <p className="text-lg font-semibold text-gray-900">Request Received!</p>
         <p className="text-gray-500 text-sm">We will call you within 24 hours to confirm your appointment.</p>
-        <button onClick={() => setSubmitted(false)} className="text-sm underline" style={{ color: "#0D9488" }}>Submit another</button>
+        <button onClick={() => setSubmitted(false)} className="text-sm underline" style={{ color: "#0D9488" }}>
+          Submit another
+        </button>
       </div>
     );
   }
 
   return (
-    <form onSubmit={submit} className="flex flex-col gap-4">
+    <form
+      action="https://formsubmit.co/nvthesportsphysio@gmail.com"
+      method="POST"
+      onSubmit={submit}
+      className="flex flex-col gap-4"
+    >
+       <input
+        type="hidden"
+        name="_cc"
+        value="learnpicktest02@gmail.com"
+      />
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_template" value="table" />
+      <input type="hidden" name="_subject" value="New Hero Section Consultation Lead" />
+      <input type="hidden" name="visitType" value={form.visit} />
+
       <div className="grid grid-cols-2 gap-3">
         <div className="col-span-2">
           <input
             required
+            name="name"
             type="text"
             placeholder="Your Name"
             value={form.name}
@@ -51,9 +68,11 @@ function BookingForm() {
             className="w-full px-4 py-3.5 rounded-xl border border-gray-200 text-gray-800 placeholder-gray-400 text-sm focus:outline-none focus:border-teal-500 bg-gray-50"
           />
         </div>
+
         <div className="col-span-2">
           <input
             required
+            name="phone"
             type="tel"
             placeholder="Phone Number"
             value={form.phone}
@@ -61,8 +80,10 @@ function BookingForm() {
             className="w-full px-4 py-3.5 rounded-xl border border-gray-200 text-gray-800 placeholder-gray-400 text-sm focus:outline-none focus:border-teal-500 bg-[#ffffff]"
           />
         </div>
+
         <div className="col-span-2">
           <input
+            name="concern"
             type="text"
             placeholder="Type your concern"
             value={form.concern}
@@ -70,8 +91,10 @@ function BookingForm() {
             className="w-full px-4 py-3.5 rounded-xl border border-gray-200 text-gray-700 placeholder-gray-400 text-sm focus:outline-none focus:border-teal-500 bg-gray-50"
           />
         </div>
+
         <div className="col-span-2">
           <input
+            name="location"
             type="text"
             placeholder="Your Location (e.g. Delhi)"
             value={form.location}
@@ -80,6 +103,7 @@ function BookingForm() {
           />
         </div>
       </div>
+
       <div className="flex gap-3">
         {VISIT_TYPES.map((t) => (
           <button
@@ -97,15 +121,21 @@ function BookingForm() {
           </button>
         ))}
       </div>
+
       <button
         type="submit"
         disabled={loading}
         className="w-full py-4 rounded-xl text-white font-semibold text-base flex items-center justify-center gap-2 transition-all hover:opacity-90"
         style={{ backgroundColor: "#0D9488" }}
       >
-        {loading ? <><Loader2 size={18} className="animate-spin" /> Submitting...</> : "Book My Consultation"}
+        {loading ? (
+          <>
+            <Loader2 size={18} className="animate-spin" /> Submitting...
+          </>
+        ) : (
+          "Book My Consultation"
+        )}
       </button>
-      
     </form>
   );
 }
