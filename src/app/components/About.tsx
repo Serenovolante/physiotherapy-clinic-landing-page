@@ -29,10 +29,12 @@ const doctors = [
     quote: "Every patient deserves care that goes beyond symptom management.",
     stats: "IAP Member since 2010 · Ex-Medeor Hospital Dubai",
     bullets: [
-      "Women's health and post-natal physiotherapy",
-      "Cupping therapy and scar rehabilitation",
-      "Ergonomics and posture correction",
-      "Neurological rehabilitation",
+      "Sports Injury Management",
+      "Musculoskeletal Dysfunction",
+      "Chronic Pain Management",
+      "Pre and Post-Operative Surgery Rehabilitation",
+      "Women’s Health Rehabilitation",
+      "Ergonomic and Lifestyle Advice"
     ],
     bottomText:
       "Get compassionate care backed by modern physiotherapy techniques.",
