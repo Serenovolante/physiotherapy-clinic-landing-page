@@ -23,11 +23,11 @@ const doctors = [
   },
   {
     img: drNilimaPhoto,
-    name: "Dr. Nilima Bhatt",
-    role: "Director",
-    quals: "Dubai Health Authority Registered · CEAS III Ergonomics (USA)",
+    name: "Dr.Nilima Bhatt(PT)",
+    role: "Senior Physiotherapist",
+    quals: "CKT/NMDM/KTS/IAP",
     quote: "Every patient deserves care that goes beyond symptom management.",
-    stats: "IAP Member since 2010 · Ex-Medeor Hospital Dubai",
+    stats: "Ex Physio Medeor hospital Dubai",
     bullets: [
       "Sports Injury Management",
       "Musculoskeletal Dysfunction",
